@@ -6,6 +6,7 @@ require 'base64'
 
 module ValveARG
   VERSION = '0.2.0'
+  IDENT = "ARGBot #{VERSION}"
 
   class Plugin
     include Cinch::Plugin
@@ -67,10 +68,12 @@ module ValveARG
     end
     
     def arg_about(m, args)
-      m.reply "ARGBot #{VERSION} by Dovahkiin"
+      m.reply "#{IDENT} by Dovahkiin"
     end
     
     def arg_help(m, args)
+      m.user.msg IDENT
+      m.user.msg "Commands can be entered in the forms !arg<cmd> or !a<cmd>."
       @commands.each {|k, v| m.user.msg "#{((v[:usage] || '%s') % k.collect{|e| e.to_s}.join(', '))}: #{v[:desc]}"}
     end
 
@@ -84,14 +87,14 @@ module ValveARG
     def arg_links(m, args)
       m.user.msg "Wiki: http://valvearg.com/tfhunt"
       m.user.msg "IRC Rules: http://valvearg.com/tfhunt/IRC_Rules"
-      m.user.msg "TF2: http://www.teamfortress.com"
-      m.user.msg "TF2 Wiki: http://wiki.teamfortress.com"
-      m.user.msg "TF2 Wiki ARG Page: http://wiki.teamfortress.com/wiki/ARG"
+      m.user.msg "TF2: http://www.tf2.com"
+      m.user.msg "TF2 Wiki: http://wiki.tf"
+      m.user.msg "TF2 Wiki ARG Page: http://wiki.tf/wiki/ARG"
     end
 
     def arg_hl3(m, args)
       @transient[:hl3_target] ||= Date.today.next
-      @transient[:hl3_target] = transient[:target].next_month
+      @transient[:hl3_target] = @transient[:hl3_target].next_month
       m.reply "Half-Life 3 delayed by one month. Current release target: #{@transient[:hl3_target].strftime('%F')}"
     end
 
