@@ -53,6 +53,9 @@ module ValveARG
     def arg_links(m, args, transient)
       m.user.msg "Wiki: http://valvearg.com/tfhunt"
       m.user.msg "IRC Rules: http://valvearg.com/tfhunt/IRC_Rules"
+      m.user.msg "TF2: http://www.teamfortress.com"
+      m.user.msg "TF2 Wiki: http://wiki.teamfortress.com"
+      m.user.msg "TF2 Wiki ARG Page: http://wiki.teamfortress.com/wiki/ARG"
     end
 
     def arg_hex(m, args, transient)
@@ -67,7 +70,7 @@ module ValveARG
       shorten = ->(url) {
         ret = nil
         begin
-          url = "http://#{url}" if !url.match(/^http(s)?:\/\//)
+          url = "http://#{url}" if !(url =~ /^http(s)?:\/\//)
           url = open("http://tinyurl.com/api-create.php?url=#{URI.escape(url)}").read
           ret = url if url != "Error"
         rescue OpenURI::HTTPError
