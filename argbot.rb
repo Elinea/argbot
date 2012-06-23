@@ -160,8 +160,10 @@ module ValveARG
       end
     end
 
-    @@bot.start
+    pid = Process.fork do
+      @@bot.start
+    end
+
+    Process.detach(pid)
   end
 end
-
-ValveARG::start!
