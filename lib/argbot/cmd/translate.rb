@@ -14,6 +14,6 @@ module ARGBot
     end
   end
   
-  cmd :translate, :tr_hex, [:hex, :x], 'Converts decimal to hex.', '%s <decimal number> ...'
-  cmd :translate, :tr_dec, [:dec, :d], 'Converts hex to decimal.', '%s <hex number> ...'
+  cmd :translate, :tr_hex, [:hex, :x], 'Translates decimal to hex', '%s <decimal number> ...'
+  cmd :translate, :tr_dec, [:dec, :d], 'Translates hex to decimal', '%s <hex number> ...'
 end

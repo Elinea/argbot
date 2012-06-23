@@ -27,6 +27,6 @@ module ARGBot
   
   cmd :crypto, :cr_md5, [:md5sum, :md5, :m], 'Takes the MD5 hash of some text', '%s <text>'
   cmd :crypto, :cr_base64e, [:base64e, :base64, :b64], 'Encodes a string with base64', '%s <text>'
-  cmd :crypto, :cr_base64d, [:base64d, :b64d], 'Decodes a base64-encoded string.', '%s <base64>'
-  cmd :crypto, :cr_rot13, [:rot13, :r13], 'Encodes a string with rot13.', '%s <text>'
+  cmd :crypto, :cr_base64d, [:base64d, :b64d], 'Decodes a base64-encoded string', '%s <base64>'
+  cmd :crypto, :cr_rot13, [:rot13, :r13], 'Encodes a string with rot13', '%s <text>'
 end

@@ -20,5 +20,5 @@ module ARGBot
   end
   
   cmd :wiki, :wk_status, [:status, :s], 'Displays ARG status'
-  cmd :wiki, :wk_news, [:news, :n], 'Displays the latest ARG news entry.'
+  cmd :wiki, :wk_news, [:news, :n], 'Displays the latest ARG news entry'
 end

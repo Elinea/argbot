@@ -25,6 +25,10 @@ module ARGBot
       m.user.msg "Jokes/off topic/speculation coming out of 4chan/\"I haven't been here for the last hour, what's going on?\" --> #valvearg3. #valvearg2 is for SOLVING and IMPORTANT RELEVANT DISCUSSION, not anything interesting you might want to say."
     end
 
+    def ge_coolguys(m, args)
+      m.user.msg "Haplo_64, CheeseGamer, Dinnerbone, Spark-bot, xPaw, Ywa, and Dovahkiin: the coolest guys around"
+    end
+
     def ge_links(m, args)
       m.user.msg "Wiki: http://valvearg.com/tfhunt"
       m.user.msg "IRC Rules: http://valvearg.com/tfhunt/IRC_Rules"
@@ -43,6 +47,7 @@ module ARGBot
   cmd :general, :ge_about, [:about, :a], 'Displays ARGBot info'
   cmd :general, :ge_help, [:help, :h], 'Displays ARGBot help'
   cmd :general, :ge_rules, [:rules, :r], 'Displays IRC rules'
+  cmd :general, :ge_coolguys, [:coolguys], 'Displays people on the IRC who have offered valuable suggestions or insights'
   cmd :general, :ge_links, [:links, :l], 'Displays relevant links'
-  cmd :general, :ge_hl3, [:hl3, :ep3], 'Try it to find out!'
+  cmd :general, :ge_hl3, [:hl3, :ep3], 'Just try it'
 end

@@ -21,5 +21,5 @@ module ARGBot
     end
   end
   
-  cmd :convenience, :cv_shorten, [:shorten, :t], 'Shortens a link.', '%s <url> ...'
+  cmd :convenience, :cv_shorten, [:shorten, :t], 'Shortens a link', '%s <url> ...'
 end
