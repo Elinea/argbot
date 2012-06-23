@@ -33,7 +33,6 @@ module ValveARG
     
     def arg_status(m, args, transient)
       m.reply "#{m.user.nick}, the Pyro has torched EVERYTHING. Hang on."
-      transient
     end
     
     def arg_about(m, args, transient)
