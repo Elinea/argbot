@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description  =  'ARGBot is a very useful bot for ARG solvers.'
   s.authors      =  ['Morgan Jones']
   s.email        =  'integ3rs@gmail.com'
-  s.files        =  FileList['lib/argbot.rb'].to_a
+  s.files        =  FileList['lib/argbot.rb', 'lib/argbot/*.rb', 'lib/argbot/cmd/*.rb'].to_a
   s.has_rdoc     = false
   s.add_dependency 'cinch'
   s.add_dependency 'json'
