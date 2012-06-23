@@ -124,12 +124,12 @@ module ValveARG
     def arg_count(m, args)
       return if args.empty?
       counts = args.split.collect{|e| e.downcase.gsub(/[^a-z0-9]/, '').length}
-      m.reply "COUNT(\"#{args}\"): #{counts.join(' ')} (total: #{counts.inject{|sum, x| sum + x }})"
+      m.reply "Letter counts: #{counts.join(' ')} (total: #{args.length}; just letters: #{counts.inject{|sum, x| sum + x }})"
     end
 
     def arg_wc(m, args)
       return if args.empty?
-      m.reply "WC(\"#{args}\"): #{args.split.count}"
+      m.reply "Word count: #{args.gsub(/[^a-z0-9 ]/, '').split.count}"
     end
 
     def arg_md5(m, args)
