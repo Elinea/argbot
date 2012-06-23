@@ -165,12 +165,6 @@ module ARGBot
       end
     end
 
-    pid = Process.fork do
-      @@bot.start
-    end
-
-    Process.detach(pid)
-
-    pid
+    @@bot.start
   end
 end
