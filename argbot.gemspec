@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
   s.files        =  FileList['lib/argbot.rb'].to_a
   s.has_rdoc     = false
   s.add_dependency 'cinch'
+  s.add_dependency 'json'
 end
