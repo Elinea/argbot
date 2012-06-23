@@ -4,7 +4,7 @@ require 'open-uri'
 require 'digest/md5'
 require 'base64'
 
-module ValveARG
+module ARGBot
   VERSION = '0.2.0'
   IDENT = "ARGBot #{VERSION}"
 
@@ -156,7 +156,7 @@ module ValveARG
         c.realname = 'Dovahkiin'
         c.server = 'irc.gamesurge.net'
         c.channels = ["#valvearg2", "#valvearg3"]
-        c.plugins.plugins = [ValveARG::Plugin]
+        c.plugins.plugins = [ARGBot::Plugin]
       end
     end
 
@@ -165,5 +165,7 @@ module ValveARG
     end
 
     Process.detach(pid)
+
+    pid
   end
 end
