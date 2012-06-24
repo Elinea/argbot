@@ -98,7 +98,7 @@ module ARGBot
     end
     
     def tr_morse_to_asc(m, args)
-      m.user.msg "ASCII: #{It us}"
+      m.user.msg "ASCII: #{args.split.collect {|a| ((@@morse_inverted ||= @@morse.invert)[(v = a.gsub(/[^\.-]/, ''))] || ->(m){((m.length == 5 && m =~ /\A(-|\.)\1*(-|\.)\2*\z/) ? (m.count('.') + m.gsub(/-+\z/, '').count('-') * 2) : nil)}.call(v)) || '?'}.join}"
     end
     
     def tr_asc_to_mmph(m, args)

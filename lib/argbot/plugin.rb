@@ -34,7 +34,7 @@ module ARGBot
         else
           @transient ||= {}
           @commands ||= @@commands
-          
+          destination = (matches[:flip].nil? 
           self.send(opts[:method], m, args)
         end
       end
