@@ -1,4 +1,4 @@
-= ARGBot 0.3.0-alpha
+= ARGBot 0.3.3-alpha
 
 A simple IRC bot for VALVE ARGs. Welcome to any suggestions.
 

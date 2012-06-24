@@ -2,7 +2,7 @@ require 'rake'
 
 Gem::Specification.new do |s|
   s.name         =  'argbot'
-  s.version      =  '0.3.2'
+  s.version      =  '0.3.3'
   s.date         =  '2012-06-23'
   s.license	 =  'MIT'
   s.homepage     =  'http://stratosphe.re'
