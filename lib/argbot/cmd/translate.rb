@@ -62,11 +62,32 @@ module ARGBot
     end
     
     def tr_to_mmph(m, args)
-      m.reply 'Unimplemented.'
-    end
-    
-    def tr_from_mmph(m, args)
-      m.reply 'Unimplemented.'
+      words = args.split
+      words.collect do |word|
+        upcase = (word =~ /\A[:upper:]+/)
+        len, half_len, last_char, idx = word.length, word.length / 2, word.length - 1, 0
+        
+        word.downcase!
+        word.gsub!(/\w/) do |match|
+          if idx < half_len && idx != last_char
+            char = 'm'
+          elsif idx >= half_len && idx != last_char
+            char = 'h'
+          elsif idx == last_char
+            char = (rand(0..1) == 1 ? 'p' : (rand(0..1) == 1 ? 'm' : 'h'))
+          end
+          
+          idx += 1
+          
+          char
+        end
+          
+        word.capitalize! if upcase
+        
+        word
+      end
+      
+      m.reply "#{m.user.nick}: #{words.join(' ')}"
     end
   end
   
@@ -75,5 +96,4 @@ module ARGBot
   cmd :translate, :tr_to_morse, [:tomorse, :morse, :tm], 'Translates ASCII to morse', '%s <ascii>'
   cmd :translate, :tr_from_morse, [:frommorse, :fm], 'Translates morse to ASCII', '%s <morse>'
   cmd :translate, :tr_to_mmph, [:tommph, :tmph, :tmp], 'Translates ASCII to Mmmmmph mmph', '%s <ascii>'
-  cmd :translate, :tr_from_mmph, [:frommmph, :fmph, :fmp], 'Translates Mmmmmph mmph to ASCII', '%s <ascii>'
 end

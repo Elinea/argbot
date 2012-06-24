@@ -6,13 +6,17 @@
 require 'argbot/irc'
 
 module ARGBot
-  VERSION = '0.3.2-alpha'
+  VERSION = '0.3.3-alpha'
   IDENT = "ARGBot #{VERSION}"
   
   @@irc = ARGBot::IRC.new
 
-  def self.start!(username, real_name, server, channels)
-    @@irc.start!(username, real_name, server, channels)
+  def self.start!(username, real_name, server, channels, exit_message)
+    trap 'INT' do
+      @@irc.stop!
+    end
+    
+    @@irc.start!(username, real_name, server, channels, exit_message)
   end
   
   def self.cmd(klass, method, aliases, description, usage = nil)

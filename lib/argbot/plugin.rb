@@ -27,20 +27,28 @@ module ARGBot
       if !matches.nil? && !matches[:cmd].nil?
         cmd = matches[:cmd].downcase
         args = (matches[:args] || '').strip
-        @@commands.each do |k, v|
-          k.each do |a|
-            if a.to_s == cmd
-              if !v[:usage].nil? && args.empty?
-                m.user.msg "usage: #{k} #{v[:usage] % cmd}"
-              else
-                @transient ||= {}
-                @commands ||= @@commands
-                self.send(v[:method], m, args)
-              end
-            end
-          end
+        aliases, opts = AB::Plugin.get_cmd(cmd)
+        
+        if !opts[:usage].nil? && args.empty?
+          m.user.msg AB::Plugin.usage(aliases, opts)
+        else
+          @transient ||= {}
+          @commands ||= @@commands
+          self.send(opts[:method], m, args)
         end
       end
+    end
+    
+    def self.get_cmd(cmd)
+      @@commands.each do |k, v|
+        k.each do |a|
+          return k, v if a.to_s == cmd
+        end
+      end
+    end
+    
+    def self.usage(aliases, opts)
+      "#{(opts[:usage] || '%s') % aliases.join(', ')} [#{opts[:desc]}]"
     end
   end
 end

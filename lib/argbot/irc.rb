@@ -9,7 +9,7 @@ require 'argbot/plugin'
 
 module ARGBot
   class IRC
-    def start!(username, real_name, server, channels)
+    def start!(username, real_name, server, channels, exit_message)
       @bot = Cinch::Bot.new do
         configure do |c|
           c.user = c.nick = username
@@ -19,7 +19,12 @@ module ARGBot
           c.plugins.plugins = [ARGBot::Plugin]
         end
       end
+      @exit_message = exit_message
       @bot.start
+    end
+    
+    def stop!
+      @bot.quit(@exit_message)
     end
     
     def cmd(klass, method, aliases, description, usage)

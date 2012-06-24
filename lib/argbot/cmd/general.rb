@@ -13,16 +13,24 @@ module ARGBot
     end
     
     def ge_help(m, args)
-      m.user.msg AB::IDENT
-      m.user.msg "Commands can be entered in the forms !arg<cmd> or !a<cmd>."
-      @commands.each {|k, v| m.user.msg "#{((v[:usage] || '%s') % k.collect{|e| e.to_s}.join(', '))}: #{v[:desc]}"}
+      cmds = args.split.collect{|e| e.to_sym}
+      
+      cmds.each do |cmd|
+        aliases, opts = AB::Plugin.get_cmd(cmd)
+        m.user.msg AB::Plugin.usage(aliases, opts)
+      end
+    end
+    
+    def ge_commands(m, args)
+      a = []
+      @commands.each {|k, v| a << k.collect{|e| e.to_s}.join(', ') }
+      m.user.msg "#{AB::IDENT} commands: [#{a.join('], [')}]"
+      m.user.msg "Use help <cmd> for help on a specific command."
+      m.user.msg "Commands can be entered in the forms !arg<cmd> or !a<cmd>. Private messages work too."
     end
 
     def ge_rules(m, args)
-      m.user.msg "Try to stay on topic, for the love of god. For example: Dinnerbone is a prettycoolguy and ZOMG MOJANG but that is not the purpose of this channel!"
-      m.user.msg "Try to type with at least 3 words per line. It really cuts down on spam. \"hello\" or \"lol\" are not good uses of lines."
-      m.user.msg "Don't ask to ask something, don't ask to say something, and post proof whenever you say something vaguely breaking; e.g. \"TF2 just updated for me, here's a screenshot of the changelog\" etc."
-      m.user.msg "Jokes/off topic/speculation coming out of 4chan/\"I haven't been here for the last hour, what's going on?\" --> #valvearg3. #valvearg2 is for SOLVING and IMPORTANT RELEVANT DISCUSSION, not anything interesting you might want to say."
+      m.user.msg "[1] Try to stay on topic, for the love of god. For example: Dinnerbone is a prettycoolguy and ZOMG MOJANG but that is not the purpose of this channel! [2] Try to type with at least 3 words per line. It really cuts down on spam. \"hello\" or \"lol\" are not good uses of lines. [3] Don't ask to ask something, don't ask to say something, and post proof whenever you say something vaguely breaking; e.g. \"TF2 just updated for me, here's a screenshot of the changelog\" etc. [4] Jokes/off topic/speculation coming out of 4chan/\"I haven't been here for the last hour, what's going on?\" => #valvearg3. #valvearg2 is for SOLVING and IMPORTANT RELEVANT DISCUSSION, not anything interesting you might want to say."
     end
 
     def ge_coolguys(m, args)
@@ -45,9 +53,10 @@ module ARGBot
   end
 
   cmd :general, :ge_about, [:about, :a], 'Displays ARGBot info'
-  cmd :general, :ge_help, [:help, :h], 'Displays ARGBot help'
+  cmd :general, :ge_help, [:help, '?'], 'Displays help for a command', '%s <cmd> ...'
+  cmd :general, :ge_commands, [:commands, :cmds], 'Displays a list of ARGBot commands'
   cmd :general, :ge_rules, [:rules, :r], 'Displays IRC rules'
-  cmd :general, :ge_coolguys, [:coolguys], 'Displays people on the IRC who have offered valuable suggestions or insights'
+  cmd :general, :ge_coolguys, [:coolguys, :cg], 'Displays people on the IRC who have offered valuable suggestions or insights'
   cmd :general, :ge_links, [:links, :l], 'Displays relevant links'
   cmd :general, :ge_hl3, [:hl3, :ep3], 'Just try it'
 end

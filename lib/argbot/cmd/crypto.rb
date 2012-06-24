@@ -5,21 +5,20 @@
 
 require 'base64'
 require 'digest/md5'
-require 'digest/sha1'
 require 'digest/sha2'
 
 module ARGBot
   module CryptoCommands
     def cr_md5(m, args)
-      m.reply "MD5(\"#{args}\"): #{Digest::MD5.hexdigest(args)}"
+      m.reply "MD5(\"#{args}\"): #{Digest::MD5.hexdigest(args)} - not recommended for cryptographical purposes"
     end
     
-    def cr_sha1(m, args)
-      m.reply "SHA1(\"#{args}\"): #{Digest::SHA1.hexdigest(args)}"
+    def cr_sha256(m, args)
+      m.reply "SHA256(\"#{args}\"): #{(Digest::SHA2.new(256) << args).to_s}"
     end
     
-    def cr_sha2(m, args)
-      m.reply "SHA2(\"#{args}\"): #{Digest::SHA2.hexdigest(args)}"
+    def cr_sha512(m, args)
+      m.reply "SHA512(\"#{args}\"): #{(Digest::SHA2.new(512) << args).to_s}"
     end
 
     def cr_base64e(m, args)
@@ -36,8 +35,8 @@ module ARGBot
   end
   
   cmd :crypto, :cr_md5, [:md5sum, :md5, :m], 'Takes the MD5 hash of some text', '%s <text>'
-  cmd :crypto, :cr_sha1, [:sha1sum, :sha1], 'Takes the SHA1 hash of some text', '%s <text>'
-  cmd :crypto, :cr_sha2, [:sha1sum, :sha2], 'Takes the SHA2 hash of some text', '%s <text>'
+  cmd :crypto, :cr_sha256, [:sha256, :s256], 'Takes a 256-bit SHA2 hash of some text', '%s <text>'
+  cmd :crypto, :cr_sha512, [:sha512, :s512], 'Takes a 512-bit SHA2 hash of some text', '%s <text>'
   cmd :crypto, :cr_base64e, [:base64e, :base64, :b64], 'Encodes a string with base64', '%s <text>'
   cmd :crypto, :cr_base64d, [:base64d, :b64d], 'Decodes a base64-encoded string', '%s <base64>'
   cmd :crypto, :cr_rot13, [:rot13, :r13], 'Encodes a string with rot13', '%s <text>'
