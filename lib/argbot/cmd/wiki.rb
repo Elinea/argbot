@@ -15,7 +15,7 @@ module ARGBot
 
     def wk_news(s, args)
       news = @@wiki.get_page('Template:News')
-      s.reply "Latest news: #{news.match(/^\s*?\*(?<news>.+)\s*$/)[1].gsub(/'+/, '')}" unless news.nil?
+      s.reply "Latest news: #{news.match(/^\s*?\*(?<news>.+)\s*$/)[:news].gsub(/'+/, '')}" unless news.nil?
     end
   end
   
