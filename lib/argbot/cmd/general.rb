@@ -34,7 +34,11 @@ module ARGBot
     end
 
     def ge_coolguys(m, args)
-      m.user.msg "Haplo_64, CheeseGamer, Dinnerbone, Spark-bot, xPaw, and Ywa: the coolest guys around"
+      m.user.msg "Haplo_64, CheeseGamer, Dinnerbone, Spark-bot, xPaw, Netshroud, Ywa, and cwKent (although he hates Ruby): the coolest guys around"
+    end
+    
+    def ge_ping(m, args)
+      m.user.msg "Pong!"
     end
 
     def ge_links(m, args)
@@ -57,6 +61,7 @@ module ARGBot
   cmd :general, :ge_commands, [:commands, :cmds], 'Displays a list of ARGBot commands'
   cmd :general, :ge_rules, [:rules, :r], 'Displays IRC rules'
   cmd :general, :ge_coolguys, [:coolguys, :cg], 'Displays people on the IRC who have offered valuable suggestions or insights'
+  cmd :general, :ge_ping, [:ping, :p], 'Pings ARGBot'
   cmd :general, :ge_links, [:links, :l], 'Displays relevant links'
   cmd :general, :ge_hl3, [:hl3, :ep3], 'Just try it'
 end

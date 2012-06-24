@@ -17,9 +17,9 @@ module ARGBot
 
     def listen(m)
       regex = if m.events.include?(:channel)
-                /^!a(rg)?(?<cmd>\w+)\s*(?<args>.*)$/
+                /^!(!|a(rg)?)(?<cmd>\w+)(?<flip>^)?\s*(?<args>.*)$/
               else
-                /^((!)?arg)?(?<cmd>\w+)\s*(?<args>.*)$/
+                /^((!)?(!)?arg)?(?<cmd>\w+)(?<flip>^)?\s*(?<args>.*)$/
               end
       matches = m.message.strip.match(regex)
       found = false
@@ -34,6 +34,7 @@ module ARGBot
         else
           @transient ||= {}
           @commands ||= @@commands
+          
           self.send(opts[:method], m, args)
         end
       end

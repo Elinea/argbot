@@ -6,7 +6,7 @@
 require 'argbot/irc'
 
 module ARGBot
-  VERSION = '0.3.3-alpha'
+  VERSION = '0.3.4-alpha'
   IDENT = "ARGBot #{VERSION}"
   
   @@irc = ARGBot::IRC.new

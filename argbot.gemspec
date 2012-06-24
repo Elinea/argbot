@@ -2,8 +2,8 @@ require 'rake'
 
 Gem::Specification.new do |s|
   s.name         =  'argbot'
-  s.version      =  '0.3.3'
-  s.date         =  '2012-06-23'
+  s.version      =  '0.3.4'
+  s.date         =  '2012-06-24'
   s.license	 =  'MIT'
   s.homepage     =  'http://stratosphe.re'
   s.summary      =  'A bot for VALVE ARGs'
