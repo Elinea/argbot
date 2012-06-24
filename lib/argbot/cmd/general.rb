@@ -13,7 +13,7 @@ module ARGBot
     end
     
     def ge_help(m, args)
-      cmds = args.split.collect{|e| e.to_sym}
+      cmds = args.split
       
       cmds.each do |cmd|
         aliases, opts = AB::Plugin.get_cmd(cmd)
@@ -34,7 +34,8 @@ module ARGBot
     end
 
     def ge_coolguys(m, args)
-      m.user.msg "Haplo_64, CheeseGamer, Dinnerbone, Spark-bot, xPaw, Netshroud, Ywa, and cwKent (although he hates Ruby): the coolest guys around"
+      guys = ['Haplo_64', 'CheeseGamer', 'Dinnerbone', 'Spark-bot', 'xPaw', 'Netshroud', 'Ywa', 'cwKent']
+      m.reply "#{guys.join(', ')}: Thanks for everything."
     end
     
     def ge_ping(m, args)
@@ -57,7 +58,7 @@ module ARGBot
   end
 
   cmd :general, :ge_about, [:about, :a], 'Displays ARGBot info'
-  cmd :general, :ge_help, [:help, '?'], 'Displays help for a command', '%s <cmd> ...'
+  cmd :general, :ge_help, [:help, '?'], 'Displays help for a command; use `commands\' for a list of commands', '%s <cmd> ...'
   cmd :general, :ge_commands, [:commands, :cmds], 'Displays a list of ARGBot commands'
   cmd :general, :ge_rules, [:rules, :r], 'Displays IRC rules'
   cmd :general, :ge_coolguys, [:coolguys, :cg], 'Displays people on the IRC who have offered valuable suggestions or insights'

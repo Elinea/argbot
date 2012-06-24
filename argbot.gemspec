@@ -14,4 +14,5 @@ Gem::Specification.new do |s|
   s.has_rdoc     = false
   s.add_dependency 'cinch'
   s.add_dependency 'json'
+  s.add_dependency 'fakefs'
 end

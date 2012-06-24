@@ -5,7 +5,6 @@
 
 module ARGBot
   module TranslateCommands
-  
     @@morse = {
       'a' => '.-',
       'b' => '-...',
@@ -145,5 +144,5 @@ module ARGBot
   cmd :translate, :tr_hex_to_bin, [:hex2bin, :x2b, :xb], 'Translates hex to binary', '%s <hex>'
   cmd :translate, :tr_asc_to_morse, [:asc2morse, :morse, :a2m, :tm], 'Translates ASCII to morse', '%s <ascii>'
   cmd :translate, :tr_morse_to_asc, [:morse2asc, :m2a, :fm], 'Translates morse to ASCII', '%s <morse>'
-  cmd :translate, :tr_asc_to_mmph, [:asc2mmph, :a2mph, :a2mp, :mmph], 'Translates ASCII to Mmmmmph mmph', '%s <ascii>'
+  cmd :translate, :tr_asc_to_mmph, [:asc2mmph, :a2mph, :a2mp, :mmph, :mpph], 'Translates ASCII to Mmmmmph mmph', '%s <ascii>'
 end

@@ -6,7 +6,7 @@
 require 'argbot/irc'
 
 module ARGBot
-  VERSION = '0.3.4-alpha'
+  VERSION = '0.3.5-alpha'
   IDENT = "ARGBot #{VERSION}"
   
   @@irc = ARGBot::IRC.new
@@ -30,5 +30,6 @@ require 'argbot/cmd/analysis'
 require 'argbot/cmd/convenience'
 require 'argbot/cmd/crypto'
 require 'argbot/cmd/general'
+require 'argbot/cmd/irb'
 require 'argbot/cmd/translate'
 require 'argbot/cmd/wiki'

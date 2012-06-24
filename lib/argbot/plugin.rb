@@ -6,7 +6,6 @@
 module ARGBot
   class Plugin
     include Cinch::Plugin
-    
     listen_to :channel, :private
     
     @@commands = {}
@@ -29,12 +28,14 @@ module ARGBot
         args = (matches[:args] || '').strip
         aliases, opts = AB::Plugin.get_cmd(cmd)
         
-        if !opts[:usage].nil? && args.empty?
+        if aliases.nil? || opts.nil?
+          return
+        elsif !opts[:usage].nil? && args.empty?
           m.user.msg AB::Plugin.usage(aliases, opts)
         else
           @transient ||= {}
           @commands ||= @@commands
-          destination = (matches[:flip].nil? 
+          #destination = (matches[:flip].nil? 
           self.send(opts[:method], m, args)
         end
       end
