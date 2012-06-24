@@ -26,7 +26,7 @@ module ARGBot
     end
 
     def ge_coolguys(m, args)
-      m.user.msg "Haplo_64, CheeseGamer, Dinnerbone, Spark-bot, xPaw, Ywa, and Dovahkiin: the coolest guys around"
+      m.user.msg "Haplo_64, CheeseGamer, Dinnerbone, Spark-bot, xPaw, and Ywa: the coolest guys around"
     end
 
     def ge_links(m, args)
